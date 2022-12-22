@@ -107,7 +107,7 @@ export default function Articles(props) {
     <FlatList
       data={newsReducer[category]["articles"]}
       renderItem={renderItem}
-      numColumns={2}
+      numColumns={1}
       initialNumToRender={10}
       onRefresh={onRefresh}
       refreshing={isRefreshing}

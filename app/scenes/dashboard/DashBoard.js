@@ -6,8 +6,9 @@ import * as api from "../../api";
 import { addHeadlines } from "../../actions";
 import Article from "../../utils";
 
-import Panel from "../../components/Panel";
 import PanelItem from "../../components/PanelItem";
+import { Button } from "react-native-elements";
+// import Panel from "../../components/Panel";
 
 export default function DashBoard(props) {
   const dispatch = useDispatch();
@@ -20,13 +21,13 @@ export default function DashBoard(props) {
   //Access Redux Store State
   const newsReducer = useSelector(({ newsReducer }) => newsReducer);
   const {
-    business,
-    entertainment,
-    general,
-    health,
-    science,
-    sports,
-    technology,
+    // business,
+    // entertainment,
+    // general,
+    // health,
+    // science,
+    // sports,
+    // technology,
   } = newsReducer;
 
   //==================================================================================================
@@ -98,24 +99,28 @@ export default function DashBoard(props) {
     );
   }
 
-  let renderDefaultItem = renderItem();
-  let renderHorizontalItem = renderItem(null, true, false, true);
+  // let renderDefaultItem = renderItem();
+  // let renderHorizontalItem = renderItem(null, true, false, true);
 
-  let renderGridItem = renderItem("small", false, true, false);
-  let renderHorizontalGridItem = renderItem(null, true, true, false);
+  // let renderGridItem = renderItem("small", false, true, false);
+  // let renderHorizontalGridItem = renderItem(null, true, true, false);
 
-  let renderSportItem = renderItem("large");
-  let renderTechItem = renderItem("large", false, true);
+  // let renderSportItem = renderItem("large");
+  // let renderTechItem = renderItem("large", false, true);
   return (
     <ScrollView style={{ backgroundColor: "#fff" }}>
-      <Panel
+      {/* <Panel
         title={"Business"}
         data={business.articles.slice(0, 10)}
         renderItem={renderDefaultItem}
         onCTAPress={() => onCTAPress("Business")}
-      />
+      /> */}
+      <Button
+        title={"Business"}
+        onPress={() => onCTAPress("Business")}
+      ></Button>
 
-      <Panel
+      {/* <Panel
         title={"Entertainment"}
         data={entertainment.articles.slice(0, 10)}
         renderItem={renderHorizontalItem}
@@ -160,11 +165,11 @@ export default function DashBoard(props) {
         renderItem={renderTechItem}
         showDivider={false}
         onCTAPress={() => onCTAPress("Technology")}
-      />
+      /> */}
     </ScrollView>
   );
 }
 
 DashBoard.navigationOptions = ({ navigation }) => {
-  return { title: `MeNews` };
+  return { title: `BooklineNews` };
 };
