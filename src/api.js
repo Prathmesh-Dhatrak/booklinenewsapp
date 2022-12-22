@@ -57,19 +57,3 @@ export async function getHeadlinesByCategory(
     throw new Error(e);
   }
 }
-
-export async function search(query, cancelToken) {
-  try {
-    const url = `${c.SEARCH}&q=${query.toLowerCase()}`;
-    let res = await axios.get(url, {
-      cancelToken: cancelToken.token,
-    });
-
-    return res.data;
-  } catch (error) {
-    let err = new Error(error.message);
-    err.isCancel = axios.isCancel(error);
-
-    throw err;
-  }
-}

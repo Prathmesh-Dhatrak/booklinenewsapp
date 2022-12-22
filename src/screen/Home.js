@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, View, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
-import * as api from "../../api";
-import { addHeadlines } from "../../actions";
-import Article from "../../utils";
+import * as api from "../api";
+import { addHeadlines } from "../actions";
+import Article from "../utils";
 
-import PanelItem from "../../components/PanelItem";
-import { Button } from "react-native-elements";
-// import Panel from "../../components/Panel";
+import PanelItem from "../components/PanelItem";
+import Panel from "../components/Panel";
 
-export default function DashBoard(props) {
+export default function Home(props) {
   const dispatch = useDispatch();
   const { navigate } = props.navigation;
 
@@ -21,13 +20,13 @@ export default function DashBoard(props) {
   //Access Redux Store State
   const newsReducer = useSelector(({ newsReducer }) => newsReducer);
   const {
-    // business,
-    // entertainment,
-    // general,
-    // health,
-    // science,
-    // sports,
-    // technology,
+    business,
+    entertainment,
+    general,
+    health,
+    science,
+    sports,
+    technology,
   } = newsReducer;
 
   //==================================================================================================
@@ -45,6 +44,7 @@ export default function DashBoard(props) {
 
     try {
       let data = await api.getHeadlines();
+      console.log(data);
       dispatch(addHeadlines(data));
     } catch (error) {
       setError(error);
@@ -99,46 +99,41 @@ export default function DashBoard(props) {
     );
   }
 
-  // let renderDefaultItem = renderItem();
-  // let renderHorizontalItem = renderItem(null, true, false, true);
+  let renderGridItem = renderItem("small", false, true, false);
 
-  // let renderGridItem = renderItem("small", false, true, false);
-  // let renderHorizontalGridItem = renderItem(null, true, true, false);
-
-  // let renderSportItem = renderItem("large");
-  // let renderTechItem = renderItem("large", false, true);
   return (
     <ScrollView style={{ backgroundColor: "#fff" }}>
-      {/* <Panel
+      <Panel
         title={"Business"}
-        data={business.articles.slice(0, 10)}
-        renderItem={renderDefaultItem}
+        cols={2}
+        data={business.articles.slice(0, 4)}
+        renderItem={renderGridItem}
+        showDivider={false}
         onCTAPress={() => onCTAPress("Business")}
-      /> */}
-      <Button
-        title={"Business"}
-        onPress={() => onCTAPress("Business")}
-      ></Button>
+      />
 
-      {/* <Panel
+      <Panel
         title={"Entertainment"}
-        data={entertainment.articles.slice(0, 10)}
-        renderItem={renderHorizontalItem}
+        cols={2}
+        data={entertainment.articles.slice(0, 4)}
+        renderItem={renderGridItem}
+        showDivider={false}
         onCTAPress={() => onCTAPress("Entertainment")}
       />
 
       <Panel
-        cols={1}
         title={"General"}
-        data={general.articles.slice(0, 6)}
-        renderItem={renderHorizontalGridItem}
+        cols={2}
+        data={general.articles.slice(0, 4)}
+        renderItem={renderGridItem}
+        showDivider={false}
         onCTAPress={() => onCTAPress("General")}
       />
 
       <Panel
-        cols={2}
         title={"Health"}
-        data={health.articles.slice(0, 6)}
+        cols={2}
+        data={health.articles.slice(0, 4)}
         renderItem={renderGridItem}
         showDivider={false}
         onCTAPress={() => onCTAPress("Health")}
@@ -146,30 +141,34 @@ export default function DashBoard(props) {
 
       <Panel
         title={"Science"}
-        data={science.articles.slice(0, 10)}
-        renderItem={renderDefaultItem}
+        cols={2}
+        data={science.articles.slice(0, 4)}
+        renderItem={renderGridItem}
+        showDivider={false}
         onCTAPress={() => onCTAPress("Science")}
       />
 
       <Panel
         title={"Sports"}
-        data={sports.articles.slice(0, 10)}
-        renderItem={renderSportItem}
+        cols={2}
+        data={sports.articles.slice(0, 4)}
+        renderItem={renderGridItem}
+        showDivider={false}
         onCTAPress={() => onCTAPress("Sports")}
       />
 
       <Panel
-        cols={1}
         title={"Technology"}
-        data={technology.articles.slice(0, 6)}
-        renderItem={renderTechItem}
+        cols={2}
+        data={technology.articles.slice(0, 4)}
+        renderItem={renderGridItem}
         showDivider={false}
         onCTAPress={() => onCTAPress("Technology")}
-      /> */}
+      />
     </ScrollView>
   );
 }
 
-DashBoard.navigationOptions = ({ navigation }) => {
+Home.navigationOptions = ({ navigation }) => {
   return { title: `BooklineNews` };
 };

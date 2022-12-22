@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FlatList, View, ActivityIndicator } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
-import * as api from "../../api";
-import * as c from "../../constants";
-import { addCategoryHeadlines } from "../../actions";
-import Article from "../../utils";
+import * as api from "../api";
+import * as c from "../constants";
+import { addCategoryHeadlines } from "../actions";
+import Article from "../utils";
 
-import PanelItem from "../../components/PanelItem";
+import PanelItem from "../components/PanelItem";
 
 export default function Articles(props) {
   const dispatch = useDispatch();

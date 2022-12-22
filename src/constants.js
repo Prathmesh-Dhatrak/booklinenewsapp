@@ -7,12 +7,11 @@ export const CATEGORY_HEADLINES_AVAILABLE = `${NAME}/CATEGORY_HEADLINES_AVAILABL
 
 //API URL
 export const API_URL = "https://newsapi.org/v2";
-export const API_KEY = "?apiKey=a035dea01e784a808528652134f5e919";
+export const API_KEY = "?apiKey=7ababcf101394efbba2bf646823e1499";
 export const API_PARAMS = `&pageSize=${PAGESIZE}`;
 
 //API End Points
 export const HEADLINES = `${API_URL}/top-headlines${API_KEY}${API_PARAMS}`;
-export const SEARCH = `${API_URL}/everything${API_KEY}${API_PARAMS}&sortBy=relevancy`;
 
 //CATEGORIES
 export const CATEGORIES = [

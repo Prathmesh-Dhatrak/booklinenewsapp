@@ -15,7 +15,13 @@ export default function Panel(props) {
   let Component = cols > 0 ? GridView : DefaultView;
 
   return (
-    <View style={[styles.container, style]}>
+    <View
+      style={[
+        styles.container,
+        style,
+        { borderBottomColor: "#006694", borderBottomWidth: 1 },
+      ]}
+    >
       {title && (
         <Header
           title={title}
