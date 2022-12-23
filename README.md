@@ -20,7 +20,8 @@ $ npm run start
   - Logout
 - Latest category wise news
 - List of specific category news
-- Pagination on scrolling list
+- Pagination on scrolling list down
+- Refresh on top scroll
 - News Details page
 - Light or Dark theme as per user default settings in the phone
 
