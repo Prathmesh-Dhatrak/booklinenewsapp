@@ -1,7 +1,7 @@
 <div align="center" >
   
 # [Development Assignment - News App](https://expo.dev/@prath/BookLineNewsApp-v2?serviceType=classic&distribution=expo-go)
-  an React Native Application created gith [Newsapi](https://newsapi.org)
+  an React Native Application created with [Newsapi](https://newsapi.org)
 </div>
 
 ## **How to install and run locally ?**
