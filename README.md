@@ -37,5 +37,7 @@ $ npm run start
 
 ## **Demo -**
 [Live](https://expo.dev/@prath/BookLineNewsApp-v2?serviceType=classic&distribution=expo-go)
+UserName: test@gmail.com
+password: 123
 
 
