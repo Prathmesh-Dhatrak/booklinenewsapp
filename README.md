@@ -1,5 +1,3 @@
-# booklinenewsapp
-
 <div align="center" >
   
 # [Development Assignment - News App](https://expo.dev/@prath/BookLineNewsApp-v2?serviceType=classic&distribution=expo-go)
