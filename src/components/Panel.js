@@ -1,18 +1,11 @@
-import React from "react";
-import {
-  ScrollView,
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  Platform,
-} from "react-native";
+import React, { useEffect } from "react";
+import { FlatList, StyleSheet, View, Text, Platform } from "react-native";
 
 export default function Panel(props) {
   const { title, titleStyle, ctaText, onCTAPress } = props;
   const { style, cols } = props;
 
-  let Component = cols > 0 ? GridView : DefaultView;
+  let Component = GridView;
 
   return (
     <View
@@ -48,24 +41,6 @@ const Header = ({ title, ctaText, onPress, style }) => {
   );
 };
 
-// DEFAULT VIEW
-const DefaultView = ({ title, data, renderItem }) => {
-  return (
-    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-      {data.map((item, index) => {
-        return (
-          <View
-            style={{ margin: 8 * 1.5, marginRight: 0 }}
-            key={`${title}${index.toString()}`}
-          >
-            {renderItem({ item, index })}
-          </View>
-        );
-      })}
-    </ScrollView>
-  );
-};
-
 export const dividerColor =
   StyleSheet.hairlineWidth < 1 ? "#bcbbc1" : "rgba(0, 0, 0, 0.12)";
 export const dividerStyle = {
@@ -78,6 +53,7 @@ const GridView = ({ title, cols, data, renderItem, showDivider }) => {
   return (
     <FlatList
       data={data}
+      scrollEnabled={false}
       numColumns={cols > 2 ? 2 : cols} //Setting the number of column
       renderItem={(props) => {
         return (
@@ -92,6 +68,7 @@ const GridView = ({ title, cols, data, renderItem, showDivider }) => {
         );
       }}
       contentContainerStyle={{ paddingHorizontal: 8 }}
+      listKey={(item, index) => `Grid_${title}${index.toString()}`}
       keyExtractor={(item, index) => `Grid_${title}${index.toString()}`}
     />
   );

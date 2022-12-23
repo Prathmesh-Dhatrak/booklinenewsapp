@@ -1,11 +1,13 @@
-import { createAppContainer } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 //IMPORT SCENES
 import HomeScreen from "./screen/Home";
 import ArticlesScreen from "./screen/Articles";
 import ArticleScreen from "./screen/Article";
-
+import AuthLoading from "./screen/authloading";
+import Login from "./screen/Login";
+import Settings from "./screen/settings";
 //ROUTES CONFIG ====================================================
 
 let font = "Roboto";
@@ -22,14 +24,24 @@ let headerTitleStyle = {
 
 //ROUTES STACK ====================================================
 
-const HomeStack = createStackNavigator(
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Articles: ArticlesScreen,
+  Article: ArticleScreen,
+  Settings: Settings,
+});
+const AuthStack = createStackNavigator({
+  Login: Login,
+});
+
+const SwitchNavigator = createSwitchNavigator(
   {
-    Home: HomeScreen,
-    Articles: ArticlesScreen,
-    Article: ArticleScreen,
+    AuthLoading: AuthLoading,
+    Auth: AuthStack,
+    App: HomeStack,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "AuthLoading",
     defaultNavigationOptions: ({ navigation }) => ({
       headerStyle,
       headerTitleStyle,
@@ -38,6 +50,5 @@ const HomeStack = createStackNavigator(
 );
 
 //ROUTER ====================================================
-const Router = createAppContainer(HomeStack);
+const Router = createAppContainer(SwitchNavigator);
 export default Router;
-

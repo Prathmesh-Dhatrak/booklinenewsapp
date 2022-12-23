@@ -7,7 +7,7 @@ export const CATEGORY_HEADLINES_AVAILABLE = `${NAME}/CATEGORY_HEADLINES_AVAILABL
 
 //API URL
 export const API_URL = "https://newsapi.org/v2";
-export const API_KEY = "?apiKey=7ababcf101394efbba2bf646823e1499";
+export const API_KEY = "?apiKey=5b169a36e9e8466a9a74b4cf54e13d8d";
 export const API_PARAMS = `&pageSize=${PAGESIZE}`;
 
 //API End Points

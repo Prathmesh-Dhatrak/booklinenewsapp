@@ -1,19 +1,26 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
 import Moment from "moment";
+import * as SecureStore from "expo-secure-store";
 import {
   StyleSheet,
   View,
   Text,
   Platform,
   Image,
+  Linking,
+  Button,
 } from "react-native";
 
 export default function Article(props) {
   Moment.locale("en");
   const { navigation } = props;
   const article = navigation.getParam("article");
-  console.log(article);
+  const signOut = () => {
+    SecureStore.deleteItemAsync("token").then(
+      props.navigation.navigate("Auth")
+    );
+  };
+  // console.log(article);
 
   //==================================================================================================
 
@@ -36,17 +43,28 @@ export default function Article(props) {
           }}
         >
           <Text style={styles.articleTitle}>{article.title}</Text>
-          <Text style={{ color: "#A5A5A4", paddingTop: 5 }}>
+          <Text style={{ color: "#A5A5A4", paddingTop: 8, fontSize: 12 }}>
             PUBLISHED : {Moment(article.publishedAt).format("MMMM d, YYYY")}
           </Text>
         </View>
         <View style={{ paddingVertical: 10 }}>
-          <Text>
-            KEY POINTS :
-            <Text style={styles.subtext}>{article.description}</Text>
+          <Text style={styles.subtext}>
+            {`KEY POINT : `}
+            {article.description}
           </Text>
         </View>
         <Text style={styles.content}>{article.content}</Text>
+        <View style={styles.infoContainer}>
+          <Button
+            title="read more"
+            onPress={() => {
+              Linking.openURL(article.url);
+            }}
+          />
+        </View>
+      </View>
+      <View>
+        <Button title="Sign Out" onPress={signOut} />
       </View>
     </View>
   );
@@ -54,7 +72,7 @@ export default function Article(props) {
 
 Article.navigationOptions = ({ navigation }) => {
   return {
-    title: `${navigation.getParam("title")}`,
+    title: `Article`,
   };
 };
 
@@ -98,21 +116,22 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    color: "#ffff !important",
+    color: "#ffff",
     fontSize: 14,
     fontWeight: "400",
     fontFamily: font,
+    lineHeight: 30,
   },
 
   articleTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
     fontFamily: font,
-    color: "#ffff !important",
+    color: "#ffff",
   },
 
   subtext: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: "400",
     fontFamily: font,
     color: "#A5A5A4",

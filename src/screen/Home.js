@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, View, Text } from "react-native";
+import { ActivityIndicator, View, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { ScrollView } from "react-native-virtualized-view";
 
 import * as api from "../api";
 import { addHeadlines } from "../actions";
@@ -44,7 +45,6 @@ export default function Home(props) {
 
     try {
       let data = await api.getHeadlines();
-      console.log(data);
       dispatch(addHeadlines(data));
     } catch (error) {
       setError(error);
