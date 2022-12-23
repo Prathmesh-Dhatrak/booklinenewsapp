@@ -61,9 +61,6 @@ const getStyle = ({ horizontal, size, grid }) => {
   let pct = 0;
   let gutter = 8 * 3;
 
-  // if (!horizontal && grid) pct = 1;
-  // else
-
   if (!grid) {
     if (horizontal) pct = 0.85;
     else if (size === "large") pct = 0.8;
@@ -136,7 +133,6 @@ export default function PanelItem(props) {
 }
 PanelItem.defaultProps = defaultProps;
 
-//STYLES
 let font = Platform.OS === "ios" ? "HelveticaNeue" : "Roboto";
 let MIN_HEIGHT = 105;
 

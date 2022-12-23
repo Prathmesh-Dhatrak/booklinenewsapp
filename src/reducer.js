@@ -40,7 +40,6 @@ const newsReducer = (state = initialState, action) => {
       const { articles } = headlines;
 
       if (page > 1) {
-        //clone the current state
         let data = state[category.toLowerCase()];
         let clone = JSON.parse(JSON.stringify(data));
         let articles_ = clone["articles"];

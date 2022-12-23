@@ -5,7 +5,7 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 
-import reducers from "./rootReducer"; //Import the root reducer
+import reducers from "./rootReducer"; 
 
 const enhancer = compose(applyMiddleware(thunk));
 

@@ -1,5 +1,3 @@
-// * Description: App Entry Point
-
 import React, { Component } from "react";
 
 import { Provider } from "react-redux";

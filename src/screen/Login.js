@@ -5,7 +5,6 @@ import * as SecureStore from "expo-secure-store";
 import UserForm from "../components/UserForm";
 const Login = (props) => {
   const [error, setError] = useState("");
-  // store the token then navigate to the app's main screen
   const storeToken = (email, password) => {
     setError("");
     if (email === "test@gmail.com" && password === "123") {

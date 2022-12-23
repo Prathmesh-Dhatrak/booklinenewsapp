@@ -48,13 +48,12 @@ export const dividerStyle = {
   borderColor: dividerColor,
 };
 
-//GRID VIEW
 const GridView = ({ title, cols, data, renderItem, showDivider }) => {
   return (
     <FlatList
       data={data}
       scrollEnabled={false}
-      numColumns={cols > 2 ? 2 : cols} //Setting the number of column
+      numColumns={cols > 2 ? 2 : cols} 
       renderItem={(props) => {
         return (
           <View
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
 
   multiCol: { flex: 1, flexDirection: "column", padding: 8 },
 
-  //HEADER STYLES
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",

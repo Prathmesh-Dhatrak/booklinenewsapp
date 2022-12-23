@@ -14,11 +14,9 @@ export default function Home(props) {
   const dispatch = useDispatch();
   const { navigate } = props.navigation;
 
-  //1 - DECLARE VARIABLES
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
-  //Access Redux Store State
   const newsReducer = useSelector(({ newsReducer }) => newsReducer);
   const {
     business,
@@ -30,16 +28,11 @@ export default function Home(props) {
     technology,
   } = newsReducer;
 
-  //==================================================================================================
 
-  //2 - MAIN CODE BEGINS HERE
   useEffect(() => {
     getData();
   }, []);
 
-  //==================================================================================================
-
-  //3 - GET DATA
   async function getData() {
     setIsFetching(true);
 
@@ -53,9 +46,6 @@ export default function Home(props) {
     }
   }
 
-  //==================================================================================================
-
-  //4 - RENDER NEWS ITEM - A function that returns a function
   const renderItem = (
     size = "small",
     horizontal = false,
@@ -76,14 +66,8 @@ export default function Home(props) {
     };
   };
 
-  //==================================================================================================
-
-  //5 - ON CTA PRESS
   const onCTAPress = (category) => navigate("Articles", { category });
 
-  //==================================================================================================
-
-  //6 - RENDER
   if (isFetching) return <Loading />;
   if (error) {
     return (

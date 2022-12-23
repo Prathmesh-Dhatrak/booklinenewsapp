@@ -20,9 +20,6 @@ export default function Article(props) {
       props.navigation.navigate("Auth")
     );
   };
-  // console.log(article);
-
-  //==================================================================================================
 
   return (
     <View style={styles.articleContainer}>

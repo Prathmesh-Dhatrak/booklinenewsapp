@@ -14,11 +14,9 @@ export default function Articles(props) {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  //1 - DECLARE VARIABLES
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  //Access Redux Store State
   const newsReducer = useSelector(({ newsReducer }) => newsReducer);
   let category = navigation.getParam("category");
   category = category.toLowerCase();
@@ -26,9 +24,6 @@ export default function Articles(props) {
   let data = newsReducer[category];
   let { articles, totalResults } = data;
 
-  //==================================================================================================
-
-  //2 - ON REFRESH
   async function onRefresh() {
     setIsRefreshing(true);
 
@@ -43,17 +38,14 @@ export default function Articles(props) {
     }
   }
 
-  //==================================================================================================
-
-  //2 - ON LOAD MORE
   async function onLoadMore() {
     if (!isLoadingMore) {
       setIsLoadingMore(true);
 
       let length = newsReducer[category]["articles"].length;
       if (length < totalResults) {
-        let currentPage = length / c.PAGESIZE; //checks the current page
-        let nextPage = currentPage + 1; //the next page
+        let currentPage = length / c.PAGESIZE; 
+        let nextPage = currentPage + 1;
 
         try {
           let data = await api.getHeadlinesByCategory(category, nextPage);
@@ -67,9 +59,6 @@ export default function Articles(props) {
     }
   }
 
-  //==================================================================================================
-
-  //3 - RENDER NEWS ITEM
   const renderItem = ({ item, index }) => {
     let article = new Article(item, navigate);
 
@@ -80,9 +69,6 @@ export default function Articles(props) {
     );
   };
 
-  //==================================================================================================
-
-  //4 - RENDER FOOTER
   const renderFooter = () => {
     if (!(articles.length < totalResults)) return null;
 
@@ -100,9 +86,6 @@ export default function Articles(props) {
     );
   };
 
-  //==================================================================================================
-
-  //5 - RENDER
   return (
     <FlatList
       data={newsReducer[category]["articles"]}
