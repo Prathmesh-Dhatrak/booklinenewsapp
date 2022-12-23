@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, View, Text } from "react-native";
+import { View, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { ScrollView } from "react-native-virtualized-view";
-
+import Loading from "../components/Loading";
 import * as api from "../api";
 import { addHeadlines } from "../actions";
 import Article from "../utils";
@@ -84,7 +84,7 @@ export default function Home(props) {
   //==================================================================================================
 
   //6 - RENDER
-  if (isFetching) return <ActivityIndicator style={{ paddingVertical: 8 }} />;
+  if (isFetching) return <Loading />;
   if (error) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

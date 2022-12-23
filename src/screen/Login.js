@@ -26,6 +26,6 @@ const Login = (props) => {
   );
 };
 Login.navigationOptions = {
-  title: "Sign In",
+  title: "Login",
 };
 export default Login;

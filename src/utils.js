@@ -1,4 +1,11 @@
 import moment from "moment";
+import * as React from "react";
+
+export const navigationRef = React.createRef();
+
+export function navigate(name, params) {
+  navigationRef.current?.navigate(name, params);
+}
 
 export default class Article {
   constructor(item, navigate) {

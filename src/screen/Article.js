@@ -25,7 +25,7 @@ export default function Article(props) {
   //==================================================================================================
 
   return (
-    <View style={styles.container}>
+    <View style={styles.articleContainer}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -57,14 +57,12 @@ export default function Article(props) {
         <View style={styles.infoContainer}>
           <Button
             title="read more"
+            style={{ color: "white !important" }}
             onPress={() => {
               Linking.openURL(article.url);
             }}
           />
         </View>
-      </View>
-      <View>
-        <Button title="Sign Out" onPress={signOut} />
       </View>
     </View>
   );
@@ -80,23 +78,15 @@ let font = Platform.OS === "ios" ? "HelveticaNeue" : "Roboto";
 let MIN_HEIGHT = 210;
 
 const styles = StyleSheet.create({
-  container: {
+  articleContainer: {
     borderRadius: 8,
     flex: 1,
-    backgroundColor: "#fff",
-    shadowColor: "#c2c4cb",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.81,
-    shadowRadius: 5.16,
-    elevation: 20,
-    padding: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 20,
   },
 
   imageContainer: {
-    backgroundColor: "#eee",
+    backgroundColor: "#eee !important",
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
@@ -116,7 +106,7 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    color: "#ffff",
+    color: "#fff !important",
     fontSize: 14,
     fontWeight: "400",
     fontFamily: font,
@@ -127,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     fontFamily: font,
-    color: "#ffff",
+    color: "#fff !important",
   },
 
   subtext: {

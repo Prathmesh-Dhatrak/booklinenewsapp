@@ -1,5 +1,5 @@
-import Loading from "../components/Loading";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 import * as SecureStore from "expo-secure-store";
 const AuthLoading = (props) => {
   const checkLoginState = async () => {
