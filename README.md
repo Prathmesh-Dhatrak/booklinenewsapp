@@ -29,6 +29,8 @@ $ npm run start
 
 - React Native
 - React Navigation
+- react-redux
+- redux-thunk
 - Expo
 - Axios
 - newsapi
