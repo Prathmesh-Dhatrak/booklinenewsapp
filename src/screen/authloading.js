@@ -3,14 +3,9 @@ import Loading from "../components/Loading";
 import * as SecureStore from "expo-secure-store";
 const AuthLoading = (props) => {
   const checkLoginState = async () => {
-    // retrieve the value of the token
     const userToken = await SecureStore.getItemAsync("token");
-
-    // navigate to the app screen if a token is present
-    // else navigate to the auth screen
     props.navigation.navigate(userToken ? "App" : "Auth");
   };
-  // call checkLoginState when the component mounts
   useEffect(() => {
     checkLoginState();
   });
