@@ -1,6 +1,5 @@
 import React from "react";
 import Moment from "moment";
-import * as SecureStore from "expo-secure-store";
 import {
   StyleSheet,
   View,
@@ -15,11 +14,6 @@ export default function Article(props) {
   Moment.locale("en");
   const { navigation } = props;
   const article = navigation.getParam("article");
-  const signOut = () => {
-    SecureStore.deleteItemAsync("token").then(
-      props.navigation.navigate("Auth")
-    );
-  };
 
   return (
     <View style={styles.articleContainer}>

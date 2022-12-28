@@ -2,7 +2,7 @@ import axios from "axios";
 
 import * as c from "./constants";
 
-export async function getHeadlines(country = "us") {
+export async function getHeadlines(country = "in") {
   try {
     let requests = [];
     c.CATEGORIES.map((category) => {
